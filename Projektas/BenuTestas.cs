@@ -16,7 +16,7 @@ using NUnit.Framework.Interfaces;
 
 namespace Projektas
 {
-    public class Class1
+    public class BenuTestas
 
 
     {
