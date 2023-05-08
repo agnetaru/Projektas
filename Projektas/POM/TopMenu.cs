@@ -12,8 +12,8 @@ namespace Projektas.POM
         IWebDriver driver;
         GeneralMethods generalMethods;
 
-        string SearchFieldXpath = "//input[@type='search']";
-        string SearchButtonXpath = "//button[@type='submit']";
+        By SearchFieldXpath = By.XPath("//input[@type='search']");
+        By SearchButtonXpath = By.XPath("//button[@type='submit']");
 
 
         public TopMenu(IWebDriver driver)

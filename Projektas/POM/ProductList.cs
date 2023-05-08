@@ -19,13 +19,13 @@ namespace Projektas.POM
         IWebDriver driver;
         GeneralMethods generalMethods;
 
-        string searchResultsCheckXpath = "//div[contains(@class,'bnProductCard__top')]//h3";
-        string firstItemXpath = "(//a[@class = 'bnProductCard__title'])[1]";
-        string moreButtonXpath = "//a[normalize-space()='Daugiau (9)']";
-        string groupingXath = "(//div[@class = 'customSelectText'])[1]";
-        string listXpath = "//div[contains(text(), 'Visas sąrašas')]";
-        string sortingXpath = "(//div[@class = 'customSelectText'])[2]";
-        string ascendingOrderXpath = "//div[contains(text(), 'Pigiausia viršuje')]";
+        By searchResultsCheckXpath = By.XPath("//div[contains(@class,'bnProductCard__top')]//h3");
+        By firstItemXpath = By.XPath("(//a[@class = 'bnProductCard__title'])[1]");
+        By moreButtonXpath =By.XPath("//a[normalize-space()='Daugiau (9)']");
+        By groupingXath = By.XPath("(//div[@class = 'customSelectText'])[1]");
+        By listXpath = By.XPath("//div[contains(text(), 'Visas sąrašas')]");
+        By sortingXpath = By.XPath("(//div[@class = 'customSelectText'])[2]");
+        By ascendingOrderXpath = By.XPath("//div[contains(text(), 'Pigiausia viršuje')]");
 
 
 
@@ -43,7 +43,7 @@ namespace Projektas.POM
         public void CategoryFilterSelection(string subcategoryName)
         {
             generalMethods.ScrollAndClickElementByJS(moreButtonXpath);
-            string subcategoryButtonXPath = "//span[contains(text(),'" + subcategoryName + "')]";
+            By subcategoryButtonXPath = By.XPath("//span[contains(text(),'" + subcategoryName + "')]");
             generalMethods.ScrollAndClickElementByJS(subcategoryButtonXPath);
         }
 

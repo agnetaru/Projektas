@@ -16,10 +16,10 @@ namespace Projektas.POM
         IWebDriver driver;
         GeneralMethods generalMethods;
 
-        string emailXpath = "//input[@id='email']";
-        string passwordXpath = "//input[@id='password']";
-        string submitButton = "//button[@type='submit']";
-        string errorBox = "//div[@class='errorsBox']";
+        By emailXpath = By.XPath("//input[@id='email']");
+        By passwordXpath = By.XPath("//input[@id='password']");
+        By submitButton = By.XPath("//button[@type='submit']");
+        By errorBox = By.XPath("//div[@class='errorsBox']");
 
 
         public Login(IWebDriver driver)
@@ -41,7 +41,7 @@ namespace Projektas.POM
 
         public void AssertLoginFailed()
         {
-            bool isElementPresent = driver.FindElements(By.XPath(errorBox)).Count > 0;
+            bool isElementPresent = driver.FindElements(errorBox).Count > 0;
             Assert.IsTrue(isElementPresent, "Login failed message not found");
         }
     }

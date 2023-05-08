@@ -15,16 +15,16 @@ namespace Projektas.POM
         IWebDriver driver;
         GeneralMethods generalMethods;
 
-        string checkCartXpath = "//a[@class = 'button button--green viewCart']";
-        string priceOfAnItem = "//span[@class='pric']//span[@class='money_amount'][1]";
-        string addToCartButton = "//button[contains(@class, 'addToCart')]";
-        string popUpCartXpath = "//div[@class='modal-content']";
-        string priceInThePopUpCart = "(//ins[@class='productItem__priceRegular']//span[@class='money_amount'])[1]";
-        string itemPriceXpath = "//span[@class='cartTable__priceValue']//span[@class='money_amount']";
-        string addOneMoreToTheCart = "//i[@class='fal fa-plus']";
-        string totalAmountXpath = "//span[@class='cartTable__subtotalValue']//span[@class='money_amount']";
-        string emptyCartXpath = "(//i[@class='fal fa-trash-alt'])[1]";
-        string cartIsEmptyNotification = "//div[@class='cart_cartIsEmpty']";
+        By checkCartXpath = By.XPath("//a[@class = 'button button--green viewCart']");
+        By priceOfAnItem = By.XPath("//span[@class='pric']//span[@class='money_amount'][1]");
+        By addToCartButton = By.XPath("//button[contains(@class, 'addToCart')]");
+        By popUpCartXpath = By.XPath("//div[@class='modal-content']");
+        By priceInThePopUpCart = By.XPath("(//ins[@class='productItem__priceRegular']//span[@class='money_amount'])[1]");
+        By itemPriceXpath = By.XPath("//span[@class='cartTable__priceValue']//span[@class='money_amount']");
+        By addOneMoreToTheCart = By.XPath("//i[@class='fal fa-plus']");
+        By totalAmountXpath = By.XPath("//span[@class='cartTable__subtotalValue']//span[@class='money_amount']");
+        By emptyCartXpath = By.XPath("(//i[@class='fal fa-trash-alt'])[1]");
+        By cartIsEmptyNotification = By.XPath("//div[@class='cart_cartIsEmpty']");
 
         public Cart(IWebDriver driver)
         {

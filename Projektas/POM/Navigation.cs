@@ -15,9 +15,9 @@ namespace Projektas.POM
         IWebDriver driver;
         GeneralMethods generalMethods;
 
-        string breadcrumbsXpath = "//div[@id='breadcrumbsWrap']";
-        string accountIcon = "//li[@class='accountIcon']//a";
-        string loginPage = "//h2[normalize-space()='Sveiki']";
+        By breadcrumbsXpath = By.XPath("//div[@id='breadcrumbsWrap']");
+        By accountIcon = By.XPath("//li[@class='accountIcon']//a");
+        By loginPage = By.XPath("//h2[normalize-space()='Sveiki']");
 
 
 
@@ -33,7 +33,7 @@ namespace Projektas.POM
 
         public void BreadcrumbsCheck(string text)
         {
-            IWebElement breadcrumbs = driver.FindElement(By.XPath(breadcrumbsXpath));
+            IWebElement breadcrumbs = driver.FindElement(breadcrumbsXpath);
             if (!breadcrumbs.Text.Contains(text))
             {
                 Assert.Fail("Breacrumbs doesn't contain " + text);
@@ -46,7 +46,7 @@ namespace Projektas.POM
             Actions action = new Actions(driver);
             action.MoveToElement(category).Perform();
             Thread.Sleep(1000);
-            generalMethods.ClickElementByJS("//a[normalize-space()='" + subCategoryName + "']");
+            generalMethods.ClickElementByJS(By.XPath("//a[normalize-space()='" + subCategoryName + "']"));
       
 
         }

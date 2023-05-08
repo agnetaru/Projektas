@@ -41,16 +41,16 @@ namespace Projektas
             el.Click();
         }
 
-        public void EnterTextByXpath(string xpath, string text)
+        public void EnterTextByXpath(By xpath, string text)
         {
-            By searchField = By.XPath(xpath);
+            By searchField = xpath;
             driver.FindElement(searchField).SendKeys(text);
         }
 
-        public void ItemListCheckByString(string xpath, string text)
+        public void ItemListCheckByString(By xpath, string text)
         {
 
-            IList<IWebElement> items = driver.FindElements(By.XPath(xpath));
+            IList<IWebElement> items = driver.FindElements(xpath);
             foreach (IWebElement item in items)
             {
                 string itemText = item.Text.ToLower();
@@ -74,18 +74,18 @@ namespace Projektas
             }
         }
 
-        public void ScrollAndClickElementByJS(string xpath)
+        public void ScrollAndClickElementByJS(By xpath)
         {
-            IWebElement el = wait.Until(x => x.FindElement(By.XPath(xpath)));
+            IWebElement el = wait.Until(x => x.FindElement(xpath));
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("arguments[0].scrollIntoView(true);", el);
             js.ExecuteScript("arguments[0].click();", el);
 
         }
 
-        public void ClickElementByJS(string xpath)
+        public void ClickElementByJS(By xpath)
         {
-            IWebElement el = wait.Until(x => x.FindElement(By.XPath(xpath)));
+            IWebElement el = wait.Until(x => x.FindElement(xpath));
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("arguments[0].click();", el);
 
@@ -108,30 +108,30 @@ namespace Projektas
 
 
 
-        public void ElementExists(string xPath)
+        public void ElementExists(By xPath)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(driver =>
             {
-                var element = driver.FindElement(By.XPath(xPath));
+                var element = driver.FindElement(xPath);
                 return element.Displayed && !string.IsNullOrEmpty(element.Text);
             });
         }
 
-        public string FindAndConvertNumbers(string xPath)
+        public string FindAndConvertNumbers(By xPath)
         {
-            string numberString = driver.FindElement(By.XPath(xPath)).Text;
+            string numberString = driver.FindElement(xPath).Text;
             numberString = numberString.Replace(",", ".");
             return numberString;
         }
 
-        public IWebElement WaitForElement(string locator, int timeoutInSeconds)
+        public IWebElement WaitForElement(By locator, int timeoutInSeconds)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
             wait.Timeout = TimeSpan.FromSeconds(timeoutInSeconds);
             wait.PollingInterval = TimeSpan.FromMilliseconds(250);
             wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-            return wait.Until(driver => driver.FindElement(By.XPath(locator)));
+            return wait.Until(driver => driver.FindElement(locator));
         }
 
        
