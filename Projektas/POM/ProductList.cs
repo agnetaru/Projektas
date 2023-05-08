@@ -26,7 +26,7 @@ namespace Projektas.POM
         By listXpath = By.XPath("//div[contains(text(), 'Visas sąrašas')]");
         By sortingXpath = By.XPath("(//div[@class = 'customSelectText'])[2]");
         By ascendingOrderXpath = By.XPath("//div[contains(text(), 'Pigiausia viršuje')]");
-
+        By priceXpath = By.XPath("//span[@class='price ']//span[@class='money_amount'] | //span[@class='price price--new']//span[@class='money_amount']");
 
 
 
@@ -66,7 +66,7 @@ namespace Projektas.POM
        
         public void ListSortingByPriceAsc()
         {
-            var priceElements = driver.FindElements(By.XPath("//span[@class='price ']//span[@class='money_amount'] | //span[@class='price price--new']//span[@class='money_amount']"));
+            var priceElements = driver.FindElements(priceXpath);
             var prices = priceElements.Select(element => double.Parse(element.Text.Replace(",", "."))).ToList();
 
             var sortedPrices = new List<double>(prices);
